@@ -10,6 +10,8 @@ app.use(express.urlencoded({ extended: true }))
 // parse requests of content-type - application/json
 app.use(express.json())
 
+require('dotenv').config()
+
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
@@ -33,6 +35,6 @@ app.get('/', (req, res) => {
 });
 
 // listen for requests
-app.listen(4000, () => {
+app.listen(process.env.PORT, () => {
     console.log("Server is listening on port 4000");
 });
